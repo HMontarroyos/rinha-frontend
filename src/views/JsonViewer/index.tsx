@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { formatJson } from "../../utils";
 
 const JsonViewer: React.FC = () => {
-  const { json, fileName, nextPage, prevPage, currentPage, totalPages } = useJson();
+  const { json, fileName, nextPage, prevPage, currentPage, totalPages } =
+    useJson();
   const navigate = useNavigate();
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -27,8 +28,8 @@ const JsonViewer: React.FC = () => {
     <S.Container>
       {formattedJson && fileName && (
         <>
-          <S.Title ref={containerRef}>{fileName}</S.Title>
-          <S.ContainerJson>
+          <S.ContainerJson ref={containerRef}>
+            <S.Title>{fileName}</S.Title>
             {formattedJson.split("\n").map((line, index) => {
               const isKey = index % 2 === 0;
               const isString = line.includes(': "');
@@ -36,16 +37,15 @@ const JsonViewer: React.FC = () => {
                 line.includes("[") || line.includes("]");
 
               return (
-                <div key={index}>
-                  <S.Json
-                    className={isKey ? "key" : "value"}
-                    hasSquareBrackets={hasSquareBrackets}
-                  >
-                    {isString
-                      ? line.replace(/"([^"]+)": "(.*?)"/g, '"$1": "$2"')
-                      : line}
-                  </S.Json>
-                </div>
+                <S.Json
+                  className={isKey ? "key" : "value"}
+                  hasSquareBrackets={hasSquareBrackets}
+                  key={index}
+                >
+                  {isString
+                    ? line.replace(/"([^"]+)": "(.*?)"/g, '"$1": "$2"')
+                    : line}
+                </S.Json>
               );
             })}
           </S.ContainerJson>

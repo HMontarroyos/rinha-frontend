@@ -31,6 +31,7 @@ export const ContainerJson = styled.div`
 `;
 
 export const Json = styled.pre<jsonProps>`
+  text-align: left;
   font-family: ${(props) => props.theme.fonts.title};
   font-size: 16px;
   font-weight: 400;
