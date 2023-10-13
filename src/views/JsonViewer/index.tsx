@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import * as S from "./styled";
 import { useJson } from "../../contexts/JsonContext";
 import { useNavigate } from "react-router-dom";
 import { formatJson } from "../../utils";
 
 const JsonViewer: React.FC = () => {
-  const { json, fileName, nextPage, prevPage, currentPage, totalPages } =
-    useJson();
+  const { json, fileName, nextPage, prevPage, currentPage, totalPages } = useJson();
   const navigate = useNavigate();
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!json || !fileName) {
@@ -15,13 +15,19 @@ const JsonViewer: React.FC = () => {
     }
   }, [json, fileName, navigate]);
 
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [currentPage]);
+
   const formattedJson = json ? formatJson(json) : null;
 
   return (
     <S.Container>
       {formattedJson && fileName && (
         <>
-          <S.Title>{fileName}</S.Title>
+          <S.Title ref={containerRef}>{fileName}</S.Title>
           <S.ContainerJson>
             {formattedJson.split("\n").map((line, index) => {
               const isKey = index % 2 === 0;
