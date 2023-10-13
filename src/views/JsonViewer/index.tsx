@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import * as S from "./styled";
 import { useJson } from "../../contexts/JsonContext";
 import { useNavigate } from "react-router-dom";
-import formatJson from "../../utils";
+import { formatJson } from "../../utils";
 
 const JsonViewer: React.FC = () => {
   const { json, fileName } = useJson();
@@ -22,7 +22,7 @@ const JsonViewer: React.FC = () => {
         <div>
           <S.Title>{fileName}</S.Title>
           <S.ContainerJson>
-            <pre>{formattedJson}</pre>
+            <S.Json>{formattedJson}</S.Json>
           </S.ContainerJson>
         </div>
       )}

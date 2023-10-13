@@ -24,3 +24,11 @@ export const ContainerJson = styled.div`
   text-align: left;
   flex-direction: column;
 `;
+
+export const Json = styled.pre`
+  font-family: ${(props) => props.theme.fonts.title};
+  color: ${(props) => props.theme.colors.accentText};
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 176.523%;
+`;
