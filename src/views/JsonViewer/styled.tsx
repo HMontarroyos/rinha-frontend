@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { darken } from "polished";
 
 interface jsonProps {
   hasSquareBrackets: boolean;
@@ -49,4 +50,32 @@ export const Json = styled.pre<jsonProps>`
       color: ${(props) => props.theme.colors.brackets}!important;
       font-weight: 700;
     `}
+`;
+
+export const ContainerButton = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+  margin-bottom: 24px;
+`;
+
+export const ButtonPagination = styled.button`
+  display: flex;
+  padding: 6px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: ${(props) => props.theme.colors.darkText};
+  background-color: ${(props) => props.theme.colors.button};
+
+  &:hover {
+    cursor: pointer;
+    background-color: ${(props) => darken(0.2, props.theme.colors.button)};
+  }
 `;
