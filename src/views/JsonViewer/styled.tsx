@@ -1,4 +1,8 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+interface jsonProps {
+  hasSquareBrackets: boolean;
+}
 
 export const Container = styled.div`
   display: flex;
@@ -25,10 +29,24 @@ export const ContainerJson = styled.div`
   flex-direction: column;
 `;
 
-export const Json = styled.pre`
+export const Json = styled.pre<jsonProps>`
   font-family: ${(props) => props.theme.fonts.title};
-  color: ${(props) => props.theme.colors.accentText};
   font-size: 16px;
   font-weight: 400;
   line-height: 176.523%;
+
+  &.key {
+    color: ${(props) => props.theme.colors.accentText};
+  }
+
+  &.value {
+    color: ${(props) => props.theme.colors.darkText};
+  }
+
+  ${(props) =>
+    props.hasSquareBrackets &&
+    css`
+      color: ${(props) => props.theme.colors.brackets}!important;
+      font-weight: 700;
+    `}
 `;
