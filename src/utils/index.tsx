@@ -12,3 +12,9 @@ export const formatJson = (jsonString: string): string => {
     return jsonString;
   }
 };
+
+export const handleKeyDown = (callback: () => void) => (e: React.KeyboardEvent) => {
+  if (e.key === "Enter") {
+    callback();
+  }
+};
