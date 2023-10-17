@@ -34,13 +34,18 @@ const Home: React.FC = () => {
   };
   return (
     <S.Container>
-      <S.Title>JSON Tree Viewer</S.Title>
+      <S.Title aria-label="JSON Tree Viewer">JSON Tree Viewer</S.Title>
       <S.Subtitle>
         Simple JSON Viewer that runs completely on-client. No data exchange{" "}
       </S.Subtitle>
-      <Button disabled={false} onChange={handleFileUpload} text={"Load JSON"} />
+      <Button
+        disabled={false}
+        onChange={handleFileUpload}
+        text={"Load JSON"}
+        aria-label="Upload JSON file"
+      />
       {!isFileValid && (
-        <S.TextInvalid>
+        <S.TextInvalid aria-label="Invalid file.">
           Invalid file. Please load a valid JSON file.
         </S.TextInvalid>
       )}
