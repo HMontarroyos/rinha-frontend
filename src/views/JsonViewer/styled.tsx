@@ -28,6 +28,7 @@ export const ContainerJson = styled.div`
   justify-content: center;
   text-align: left;
   flex-direction: column;
+  max-width: 100%; 
 `;
 
 export const Json = styled.pre<jsonProps>`
@@ -36,6 +37,7 @@ export const Json = styled.pre<jsonProps>`
   font-size: 16px;
   font-weight: 400;
   line-height: 176.523%;
+  white-space: pre-wrap; 
 
   &.key {
     color: ${(props) => props.theme.colors.accentText};
