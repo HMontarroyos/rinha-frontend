@@ -34,3 +34,8 @@ export const Text = styled.p`
 export const FileInput = styled.input`
   display: none;
 `;
+
+export const Button = styled.button`
+
+
+`

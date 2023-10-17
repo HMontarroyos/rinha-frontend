@@ -1,13 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./styled";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../components";
 import { useJson } from "../../contexts/JsonContext";
+import { handleKeyDown } from "../../utils";
 
 const Home: React.FC = () => {
   const { setJsonData } = useJson();
   const [isFileValid, setIsFileValid] = useState(true);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleKeyDownEvent = (e: KeyboardEvent) => {
+      if (e.key === "Enter") {
+        const input = document.getElementById("file-input") as HTMLInputElement;
+        input?.click();
+      }
+    };
+    
+    return () => {
+      document.removeEventListener("keydown", handleKeyDownEvent);
+    };
+  }, []);
+
+
+  const handleKeyDownForUpload = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      const input = document.getElementById("file-input") as HTMLInputElement;
+      input?.click();
+    }
+  };
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target?.files?.[0];
@@ -32,6 +54,7 @@ const Home: React.FC = () => {
       setIsFileValid(false);
     }
   };
+
   return (
     <S.Container>
       <S.Title aria-label="JSON Tree Viewer">JSON Tree Viewer</S.Title>
@@ -41,6 +64,7 @@ const Home: React.FC = () => {
       <Button
         disabled={false}
         onChange={handleFileUpload}
+        onKeyDown={handleKeyDownForUpload}
         text={"Load JSON"}
         aria-label="Upload JSON file"
       />
