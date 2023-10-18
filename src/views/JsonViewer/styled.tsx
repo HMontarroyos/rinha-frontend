@@ -12,6 +12,7 @@ export const Container = styled.div`
   text-align: center;
   flex-direction: column;
   margin-top: 24px;
+  flex-wrap: wrap;
 `;
 
 export const Title = styled.h1`
@@ -29,6 +30,7 @@ export const ContainerJson = styled.div`
   text-align: left;
   flex-direction: column;
   max-width: 100%; 
+  flex-wrap: wrap;
 `;
 
 export const Json = styled.pre<jsonProps>`

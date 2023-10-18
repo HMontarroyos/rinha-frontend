@@ -3,7 +3,6 @@ import * as S from "./styled";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../components";
 import { useJson } from "../../contexts/JsonContext";
-import { handleKeyDown } from "../../utils";
 
 const Home: React.FC = () => {
   const { setJsonData } = useJson();
@@ -17,7 +16,7 @@ const Home: React.FC = () => {
         input?.click();
       }
     };
-    
+
     return () => {
       document.removeEventListener("keydown", handleKeyDownEvent);
     };
