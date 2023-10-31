@@ -72,7 +72,7 @@ const Home: React.FC = () => {
         text={"Load JSON"}
         aria-label="Upload JSON file"
       />
-      <S.LinkExample href={linkJsonExample} target="_blank">Json Examples Files</S.LinkExample>
+      <S.LinkExample href={linkJsonExample} target="_blank" aria-label="Json Examples Files Link">Json Examples Files</S.LinkExample>
       {isLoading && <Loading/>}
       {!isFileValid && (
         <S.TextInvalid aria-label="Invalid file.">
