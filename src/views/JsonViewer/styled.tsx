@@ -7,12 +7,12 @@ interface jsonProps {
 
 export const Container = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  flex-direction: column;
   margin-top: 24px;
-  flex-wrap: wrap;
+  min-height: 100vh;
+  padding: 0 10vw;
 `;
 
 export const ContainerTitle = styled.div`
@@ -31,7 +31,6 @@ export const Icon = styled.button`
     cursor: pointer;
     color: ${(props) => lighten(0.2, props.theme.colors.darkText)};
   }
-
 `;
 
 export const Title = styled.h1`
