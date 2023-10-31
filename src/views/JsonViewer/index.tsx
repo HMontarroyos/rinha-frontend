@@ -30,6 +30,7 @@ const JsonViewer: React.FC = () => {
   const handlePrevPageKeyDown = handleKeyDown(prevPage);
   const handleNextPageKeyDown = handleKeyDown(nextPage);
 
+  // TODO: Ajustar Jsons grandes que estão quebrando o estilo do JSON (PS: Acabei ficando atarefado esse mês e não consegui terminar a tempo isso ;( ))
   return (
     <S.Container aria-label="JSON Viewer" tabIndex={-1}>
       {formattedJson && fileName && (
