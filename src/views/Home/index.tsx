@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./styled";
 import { useNavigate } from "react-router-dom";
-import { Button } from "../../components";
+import { Button, Loading } from "../../components";
 import { useJson } from "../../contexts/JsonContext";
 
 const Home: React.FC = () => {
   const { setJsonData } = useJson();
   const [isFileValid, setIsFileValid] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,7 +23,6 @@ const Home: React.FC = () => {
     };
   }, []);
 
-
   const handleKeyDownForUpload = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
       const input = document.getElementById("file-input") as HTMLInputElement;
@@ -33,6 +33,8 @@ const Home: React.FC = () => {
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target?.files?.[0];
     if (file) {
+      setIsLoading(true);
+
       const reader = new FileReader();
 
       reader.onload = (e) => {
@@ -45,6 +47,8 @@ const Home: React.FC = () => {
         } catch (error) {
           setIsFileValid(false);
           console.log("Invalid JSON file. Error:", error);
+        } finally {
+          setIsLoading(false);
         }
       };
 
@@ -67,6 +71,7 @@ const Home: React.FC = () => {
         text={"Load JSON"}
         aria-label="Upload JSON file"
       />
+      {isLoading && <Loading/>}
       {!isFileValid && (
         <S.TextInvalid aria-label="Invalid file.">
           Invalid file. Please load a valid JSON file.
