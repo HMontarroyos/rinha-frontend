@@ -3,6 +3,7 @@ import * as S from "./styled";
 import { useNavigate } from "react-router-dom";
 import { Button, Loading } from "../../components";
 import { useJson } from "../../contexts/JsonContext";
+import { linkJsonExample } from "../../global/const";
 
 const Home: React.FC = () => {
   const { setJsonData } = useJson();
@@ -71,6 +72,7 @@ const Home: React.FC = () => {
         text={"Load JSON"}
         aria-label="Upload JSON file"
       />
+      <S.LinkExample href={linkJsonExample} target="_blank">Json Examples Files</S.LinkExample>
       {isLoading && <Loading/>}
       {!isFileValid && (
         <S.TextInvalid aria-label="Invalid file.">

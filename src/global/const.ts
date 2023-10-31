@@ -1,0 +1,1 @@
+export const linkJsonExample = "https://drive.google.com/drive/folders/1TNlb1aX4lm4nXasYvK6aohTg-OA_RCJ3?usp=drive_link"

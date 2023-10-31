@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { darken } from "polished";
 
 export const Container = styled.div`
   display: flex;
@@ -24,6 +25,19 @@ export const Subtitle = styled.p`
   color: ${(props) => props.theme.colors.darkText};
   font-size: 24px;
   font-weight: 400;
+`;
+
+export const LinkExample = styled.a`
+  margin-top: 24px;
+  font-family: ${(props) => props.theme.fonts.title};
+  color: ${(props) => props.theme.colors.accentText};
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    cursor: pointer;
+    color: ${(props) => darken(0.2, props.theme.colors.accentText)};
+  }
 `;
 
 export const TextInvalid = styled.p`
